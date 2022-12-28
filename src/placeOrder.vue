@@ -1,12 +1,7 @@
 <template>
   <div class="totalDiv">
     <div>
-      视频标题：<input
-        class="kk"
-        type="text"
-        placeholder="输入视频标题"
-        v-model="title"
-      />
+      视频标题：<input class="kk" type="text" placeholder="输入视频标题" v-model="title" />
     </div>
     <div>
       关联老师：
@@ -28,7 +23,7 @@
     </div>
     <div>
       选择收费模式：
-      <input type="radio" v-model="moneyMode" value="0" />付费 
+      <input type="radio" v-model="moneyMode" value="0" />付费
       <p v-show="moneyMode == 1 ? false : true">
         输入购买费用：
         <input class="dz" type="text" v-model.number="moneyCount" />
@@ -48,12 +43,7 @@
       <input type="radio" v-model="timeModel" value="0" />立即开售<br />
       <input type="radio" v-model="timeModel" value="1" />定时开售
       <p v-show="timeModel == 1 ? true : false">
-        <input
-          class="kk"
-          type="text"
-          placeholder="开售时间：2019-09-01 00:00:00"
-          v-model="timeCount"
-        />
+        <input class="kk" type="text" placeholder="开售时间：2019-09-01 00:00:00" v-model="timeCount" />
       </p>
       <br />
       <input type="radio" v-model="timeModel" value="2" />暂不开售
