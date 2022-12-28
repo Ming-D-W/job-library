@@ -18,6 +18,9 @@ input.dz{
     height: 40px;
     border: 1px solid #000;
 }
+input.zh{
+    margin-top: 15px;
+}
 select{
     width: 300px;
     height: 40px;
@@ -26,7 +29,7 @@ p{
     display: inline-block;
 }
 button{
-    width: 60px;
+    width: 80px;
     height: 30px;
     border-radius: 5px;
     background-color: #fff;
@@ -34,4 +37,15 @@ button{
     position:absolute;
     bottom:20px;
     right:20px;
+}
+.remarks {
+    font-size: 12px;
+    margin-bottom: 5px;
+    color: #dddddd;
+}
+.launch{
+    display: inline-block;
+}
+.openingTime{
+    display: flex;
 }

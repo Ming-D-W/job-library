@@ -5,8 +5,8 @@
         </div>
         <div>
             关联老师：
-            <select v-model="teacher">
-                <option value="">请选择关联老师</option>
+            <select v-model.number="teacher">
+                <option value="-1" hidden>请选择关联老师</option>
                 <option value="0">老王</option>
                 <option value="1">张梦龙</option>
                 <option value="2">武晓慧</option>
@@ -14,8 +14,8 @@
         </div>
         <div>
             选择类型分类：
-            <select v-model="cate">
-                <option value="">选择线上线下</option>
+            <select v-model.number="cate">
+                <option value="-1" hidden>选择线上线下</option>
                 <option value="0">线下</option>
                 <option value="1">线上</option>
                 <option value="2">其他</option>
@@ -23,12 +23,12 @@
         </div>
         <div>
             选择收费模式：
-            <input type="radio" v-model="moneyMode" value="0" />付费
-            <p v-show="moneyMode === '1' ? false : true">
+            <input type="radio" v-model.number="moneyMode" value="0" />付费
+            <p v-show="moneyMode === 1 ? false : true">
                 输入购买费用：
                 <input class="dz" type="text" v-model.number="moneyCount" />
             </p>
-            <input type="radio" v-model="moneyMode" value="1" />免费 <br />
+            <input type="radio" v-model.number="moneyMode" value="1" />免费 <br />
         </div>
         <div>
             视频简介：<input class="kk" type="text" placeholder="输入分享描述" v-model="des" />
@@ -38,16 +38,20 @@
             <br />
             <textarea cols="60" rows="10" v-model="videoDetail"></textarea>
         </div>
-        <div>
-            开售时间：<br />
-            <input type="radio" v-model="timeModel" value="0" />立即开售<br />
-            <input type="radio" v-model="timeModel" value="1" />定时开售
-            <p v-show="timeModel === '1' ? true : false">
-                <input class="kk" type="text" placeholder="开售时间：2019-09-01 00:00:00" v-model="timeCount" />
-            </p>
-            <br />
-            <input type="radio" v-model="timeModel" value="2" />暂不开售
+        <div class="openingTime">
+            <p>开售时间：</p>
+            <div class="launch">
+                <input type="radio" class="zh" v-model.number="timeModel" value="0" />立即开售<br />
+                <input type="radio" class="zh" v-model.number="timeModel" value="1" />定时开售
+                <p v-show="timeModel === 1 ? true : false">
+                    <input class="kk" type="text" placeholder="开售时间：2019-09-01 00:00:00" v-model="timeCount" />
+                </p>
+                <br />
+                <input type="radio" class="zh" v-model.number="timeModel" value="2" />暂不开售
+                <div class="remarks">注：知识付费为虚拟内容服务，买家购买不支持退款，请知晓。</div>
+            </div>
         </div>
+
         <button @click="submit">保存</button>
     </div>
 </template>
@@ -56,9 +60,9 @@ export default {
     data() {
         return {
             title: "", // 视频标题
-            teacher: "", // 关联老师 0老王，1张梦龙 2武晓慧
-            cate: "", // 0 线下 1线上 2其他
-            moneyMode: "1", // 0 付费模式 1 免费模式
+            teacher: "-1", // 关联老师 0老王，1张梦龙 2武晓慧
+            cate: "-1", // 0 线下 1线上 2其他
+            moneyMode: "0", // 0 付费模式 1 免费模式
             moneyCount: "", //如果是付费模式，需要提交付费金额，如果是免费模式，不需要有这个字段
             des: "", //视频简介
             videoDetail: "", // 视频详情
