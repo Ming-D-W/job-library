@@ -24,9 +24,9 @@
         <div>
             选择收费模式：
             <input type="radio" v-model.number="moneyMode" value="0" />付费
-            <p v-show="moneyMode === 1 ? false : true">
+            <p v-if="moneyMode === 0 ? true : false">
                 输入购买费用：
-                <input class="dz" type="text" v-model.number="moneyCount" />
+                <input class="dz" type="text" v-model="moneyCount" />
             </p>
             <input type="radio" v-model.number="moneyMode" value="1" />免费 <br />
         </div>
@@ -62,7 +62,7 @@ export default {
             title: "", // 视频标题
             teacher: "-1", // 关联老师 0老王，1张梦龙 2武晓慧
             cate: "-1", // 0 线下 1线上 2其他
-            moneyMode: "0", // 0 付费模式 1 免费模式
+            moneyMode: "", // 0 付费模式 1 免费模式
             moneyCount: "", //如果是付费模式，需要提交付费金额，如果是免费模式，不需要有这个字段
             des: "", //视频简介
             videoDetail: "", // 视频详情
@@ -81,8 +81,8 @@ export default {
                 videoDetail: this.videoDetail,
                 timeModel: this.timeModel,
             };
-            if (this.moneyMode === "0") params.moneyCount = this.moneyCount;
-            if (this.timeModel === "1") params.timeCount = this.timeCount;
+            if (this.moneyMode === 0) params.moneyCount = this.moneyCount;
+            if (this.timeModel === 1) params.timeCount = this.timeCount;
             console.log(params);
         },
     },
