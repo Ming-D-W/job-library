@@ -1,0 +1,37 @@
+div{
+    margin-top: 10px;
+    position: relative;
+}
+div.totalDiv{
+    width: 600px;
+    height: 700px;
+    border: 1px solid #000;
+    padding: 20px;
+}
+input.kk{
+    width: 300px;
+    height: 40px;
+    border: 1px solid #000;
+}
+input.dz{
+    width: 100px;
+    height: 40px;
+    border: 1px solid #000;
+}
+select{
+    width: 300px;
+    height: 40px;
+}
+p{
+    display: inline-block;
+}
+button{
+    width: 60px;
+    height: 30px;
+    border-radius: 5px;
+    background-color: #fff;
+    border: 1px solid #999;
+    position:absolute;
+    bottom:20px;
+    right:20px;
+}

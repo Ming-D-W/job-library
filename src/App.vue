@@ -1,28 +1,34 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <h3>
+      {{ msg }}<br />
+      {{ age }}<br />
+      {{ obj.name }}
+    </h3>
+    <h4>{{ obj.info.toUpperCase() }}</h4>
+    <h4>
+      {{ age >= 18 ? "大于等于18" : "未成年" }}
+    </h4>
+    <a :href="url">点击跳转百度</a>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
+// MVVM框架  M==>model数据模型  V==>view视图层   VM(viewModel)==>视图模型层
+// 提供一个数据
 export default {
-  name: 'App',
-  components: {
-    HelloWorld
-  }
-}
+  data() {
+    return {
+      age: 18,
+      msg: "黑马",
+      obj: {
+        name: "wwm",
+        info: "Hello Heima",
+      },
+      url:"https://www.baidu.com"
+    };
+  },
+};
 </script>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
+<style lang="less"></style>
