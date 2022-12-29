@@ -7,9 +7,8 @@
             关联老师：
             <select v-model.number="teacher">
                 <option value="-1" hidden>请选择关联老师</option>
-                <option value="0">老王</option>
-                <option value="1">张梦龙</option>
-                <option value="2">武晓慧</option>
+                <option value="0">王如军</option>
+                <option value="1">武晓慧</option>
             </select>
         </div>
         <div>
@@ -67,7 +66,7 @@ export default {
             des: "", //视频简介
             videoDetail: "", // 视频详情
             timeModel: "", // 0 立即开售 1 定时开售 2暂不开售
-            timeCount: "", //如果是定时开售，提交开售时间，如果是其他模式不需要有这个字段 }
+            timeCount: "", //如果是定时开售，提交开售时间，如果是其他模式不需要有这个字段 
         };
     },
     methods: {
