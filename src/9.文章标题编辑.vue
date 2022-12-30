@@ -17,7 +17,7 @@
                     <div class="label">频道：</div>
                     <div class="input">
                         <select v-model="article.channel">
-                            <option value="请选择频道" hidden>请选择频道</option>
+                            <option value="文章频道" hidden>请选择频道</option>
                             <option value="前端">前端</option>
                             <option value="运维">运维</option>
                             <option value="测试">测试</option>
@@ -41,23 +41,18 @@ export default {
     name: 'ArticleCase',
     data() {
         return {
-            edit: false,
-            flag: true,
+            flag: false,
             articleTitle: '文章标题',
             articleChannel: '文章频道',
             article: {
                 title: '文章标题',
-                channel: '请选择频道',
-            },
-            form: {
-                title: '',
-                channel: '',
+                channel: '文章频道',
             },
         };
     },
     methods: {
         showHide() {
-            this.flag = !this.flag;
+            this.flag = true
         },
         submit() {
             this.articleTitle = this.article.title
