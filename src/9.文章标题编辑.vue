@@ -27,7 +27,7 @@
                 <div class="form-item">
                     <div class="label"></div>
                     <div class="input">
-                        <button class="cancel" @click="cancel">取消</button>
+                        <button class="cancel" @click="showHide">取消</button>
                         <button class="submit" @click="submit">确认</button>
                     </div>
                 </div>
@@ -62,9 +62,6 @@ export default {
         submit() {
             this.articleTitle = this.article.title
             this.articleChannel = this.article.channel
-            this.flag = !this.flag;
-        },
-        cancel(){
             this.flag = !this.flag;
         }
     },
