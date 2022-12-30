@@ -17,7 +17,7 @@
                     <div class="label">频道：</div>
                     <div class="input">
                         <select v-model="article.channel">
-                            <option value="">请选择频道</option>
+                            <option value="请选择频道" hidden>请选择频道</option>
                             <option value="前端">前端</option>
                             <option value="运维">运维</option>
                             <option value="测试">测试</option>
@@ -27,7 +27,7 @@
                 <div class="form-item">
                     <div class="label"></div>
                     <div class="input">
-                        <button class="cancel" @click="showHide">取消</button>
+                        <button class="cancel" @click="cancel">取消</button>
                         <button class="submit" @click="submit">确认</button>
                     </div>
                 </div>
@@ -44,10 +44,10 @@ export default {
             edit: false,
             flag: true,
             articleTitle: '文章标题',
-            articleChannel:'文章频道',
+            articleChannel: '文章频道',
             article: {
-                title: '如何成为一名前端老鸟？',
-                channel: '前端',
+                title: '文章标题',
+                channel: '请选择频道',
             },
             form: {
                 title: '',
@@ -62,6 +62,11 @@ export default {
         submit() {
             this.articleTitle = this.article.title
             this.articleChannel = this.article.channel
+            this.flag = !this.flag;
+        },
+        cancel() {
+            this.article.title = this.articleTitle
+            this.article.channel = this.articleChannel
             this.flag = !this.flag;
         }
     },
