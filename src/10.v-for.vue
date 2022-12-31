@@ -3,6 +3,17 @@
         <ul>
             <li v-for="(item, index) in arr" :key='index'>{{ item.title }}</li>
         </ul>
+        <hr>
+        <ul>
+            <li v-for="(value,key) in obj" :key="key">
+            {{ value }}--{{ key }}
+            </li>
+        </ul>
+        <ul>
+            <li v-for="(item,index) in count" :key="item">
+            {{ item }}--{{ index }}
+            </li>
+        </ul>
     </div>
 </template>
 
@@ -10,6 +21,12 @@
 export default {
     data() {
         return {
+            count:'121212',
+            obj: {
+                name: '坤坤',
+                age: 20,
+                address: '曼哈顿人民广场',
+            },
             arr: [
                 {
                     id: 0,
