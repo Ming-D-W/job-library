@@ -79,9 +79,10 @@ export default {
         this.form.gender = ''
         return
       }
-      // 添加
+      // 提交的数据中没有id时添加
       if (this.form.id === '') {
         let lastItemId = this.list.length > 0 ? this.list[this.list.length - 1].id + 1 : 1
+        // 如果不是空数组，添加的id是数组中最后一项的id+1
         this.list.push({
           id: lastItemId,
           name: this.form.name,
@@ -89,7 +90,7 @@ export default {
           gender: this.form.gender
         })
       } else {
-        // 修改
+        // 提交的数据中有id时修改
         let modifiedItem = {
           id: this.form.id,
           name: this.form.name,
