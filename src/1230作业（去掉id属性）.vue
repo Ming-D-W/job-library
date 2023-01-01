@@ -28,14 +28,14 @@
           <th>操作</th>
         </tr>
         <tbody v-if="this.list.length">
-          <tr v-for="(item, index) in list" :key="item.id">
-            <td>{{ index + 1 }}</td>
+          <tr v-for="(item,index) in list" :key="item.name">
+            <td>{{ index+1 }}</td>
             <td>{{ item.name }}</td>
             <td>{{ item.age }}</td>
             <td>{{ item.gender }}</td>
             <td>
-              <button @click="removeItemById(item.id)">删除</button>
-              <button @click="editItemById(item.id)">编辑</button>
+              <button @click="removeItemByName(item.name)">删除</button>
+              <button @click="editItemByName(item.name)">编辑</button>
             </td>
           </tr>
         </tbody>
@@ -61,7 +61,6 @@ export default {
   data() {
     return {
       form: {
-        id: '',
         name: '',
         age: '',
         gender: ''
@@ -72,53 +71,52 @@ export default {
   methods: {
     submit() {
       // 判断输入是否合法
-      if (this.form.age < 0 || this.form.gender == '') {
+      if (this.form.age < 0 || !this.form.age || !this.form.name || !this.form.gender) {
         alert('数据不合法')
         this.form.name = ''
         this.form.age = ''
         this.form.gender = ''
         return
       }
-      // 添加
-      if (this.form.id === '') {
-        let lastItemId = this.list.length > 0 ? this.list[this.list.length - 1].id + 1 : 1
+      // name不存在时添加
+      // 实例方法`some` 检测数组中的元素是否满足指定条件   如果数组中有元素满足条件返回 true，否则返回 false
+      let flag = this.list.some(item => item.name === this.form.name);
+      // console.log(flag);
+      if (!flag) {
         this.list.push({
-          id: lastItemId,
           name: this.form.name,
           age: this.form.age,
           gender: this.form.gender
         })
       } else {
-        // 修改
+        // name存在时修改
         let modifiedItem = {
-          id: this.form.id,
           name: this.form.name,
           age: this.form.age,
           gender: this.form.gender
         }
-        // 找到id对应的项的索引
-        let index = this.list.findIndex(item => item.id === this.form.id)
+        // 找到name对应的项的索引
+        let index = this.list.findIndex(item => item.name === this.form.name)
         // 替换列表中的该项
         this.list.splice(index, 1, modifiedItem)
 
       }
-      this.form.id = ''
       this.form.name = ''
       this.form.age = ''
       this.form.gender = ''
 
     },
-    removeItemById(id) {
-      // 找到id对应的项的索引
-      const index = this.list.findIndex(item => item.id === id);
+    removeItemByName(name) {
+      // 找到name对应的项的索引
+      const index = this.list.findIndex(item => item.name === name);
       // 删除列表中的该项
       this.list.splice(index, 1);
     },
-    editItemById(id) {
-      const aCertainItem = this.list.find(item => item.id === id);
+    editItemByName(name) {
+      // 找到name对应的项的索引
+      const aCertainItem = this.list.find(item => item.name === name);
       // console.log(aCertainItem);
       // this.form = aCertainItem
-      this.form.id = aCertainItem.id
       this.form.name = aCertainItem.name
       this.form.age = aCertainItem.age
       this.form.gender = aCertainItem.gender
