@@ -72,7 +72,7 @@ export default {
   methods: {
     submit() {
       // 判断输入是否合法
-      if (this.form.age < 0 || this.form.gender == '') {
+      if (this.form.age < 0 || !this.form.age || !this.form.name || !this.form.gender) {
         alert('数据不合法')
         this.form.name = ''
         this.form.age = ''
