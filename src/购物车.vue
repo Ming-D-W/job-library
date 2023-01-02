@@ -122,7 +122,7 @@ export default {
       // 对勾选的商品计数
       return this.list.filter((item) => item.isSelected).reduce((prev, item) => {
         return prev + item.price * item.count
-      }, 0)
+      }, 0).toFixed(2)
     },
     total() {
       return this.list.filter((item) => item.isSelected).reduce((prev, item) => {
