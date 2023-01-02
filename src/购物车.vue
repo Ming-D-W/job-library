@@ -38,15 +38,16 @@
         <td colspan="7">
           <div class="jiesuan clearfix">
             <div class="left fl">
-              <p><input type="checkbox" name="" class="choose_all" v-model="selectAll"> 全选&nbsp;&nbsp;&nbsp;<a
-                  href="#" class="del_check">删除选中商品</a>
+              <p><input type="checkbox" name="" class="choose_all" v-model="selectAll"> 全选&nbsp;&nbsp;&nbsp;<a href="#"
+                  class="del_check">删除选中商品</a>
               </p>
             </div>
             <div class="right fr clearfix">
               <p>商品总计：￥465.00</p>
               <p>活动优惠：-￥0.00</p>
-              <p>已选商品<span class="red t-number"> {{ total }} </span>件 总价(不含运费、税费)：<span
-                  class="red t-price">￥{{ totalPrice }}</span></p>
+              <p>已选商品<span class="red t-number"> {{ total }} </span>件 总价(不含运费、税费)：<span class="red t-price">￥{{
+    totalPrice
+}}</span></p>
               <!-- <div><a href="#" class="btn pay">结算</a></div> -->
               <a href="#" class="btn pay fr">结算</a>
             </div>
@@ -118,6 +119,7 @@ export default {
       }
     },
     totalPrice() {
+      // 对勾选的商品计数
       return this.list.filter((item) => item.isSelected).reduce((prev, item) => {
         return prev + item.price * item.count
       }, 0)
