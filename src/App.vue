@@ -68,7 +68,8 @@ export default {
       handler(val) {
         // console.log(val)
         localStorage.setItem('todoList', JSON.stringify(val))
-      }
+      },
+      deep: true
     }
   }
 }
