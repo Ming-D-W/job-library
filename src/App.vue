@@ -5,7 +5,8 @@
               @check="check"
               @deleteItem="deleteItem"
               @selectAll="selectAll"/>
-    <TodoFooter :list="list"/>
+    <TodoFooter :list="list"
+                @purgeComplet="purgeComplet"/>
   </section>
 </template>
 
@@ -46,6 +47,10 @@ export default {
     // 全选
     selectAll(val) {
       this.list.forEach(item => item.isDone = val)
+    },
+    // 清除已完成
+    purgeComplet(){
+      this.list = this.list.filter(item => !item.isDone)
     }
   }
 }

@@ -1,19 +1,19 @@
 <template>
   <!-- 底部部分 -->
   <footer class="footer">
-    <span class="todo-count"><strong>0</strong>剩余</span>
+    <span class="todo-count"><strong>{{remainder}}</strong>剩余</span>
     <ul class="filters">
       <li>
-        <a class="selected" href="#/">全部</a>
+        <a :class="{selected:type==='selected'}" href="#/" @click="switchState('selected')">全部</a>
       </li>
       <li>
-        <a href="#/active">进行中</a>
+        <a :class="{active:type==='active'}" href="#/active" @click="switchState('active')">进行中</a>
       </li>
       <li>
-        <a href="#/completed">已完成</a>
+        <a :class="{completed:type==='completed'}" href="#/completed" @click="switchState('completed')">已完成</a>
       </li>
     </ul>
-    <button class="clear-completed">清除已完成</button>
+    <button class="clear-completed" @click="purgeComplet">清除已完成</button>
   </footer>
 </template>
 
@@ -31,11 +31,23 @@ export default {
       type: 'all'
     }
   },
-  methods: {},
+  methods: {
+    purgeComplet(){
+      this.$emit('purgeComplet')
+    },
+    switchState(type){
+      if (type==='active'){
+        this.type='active'
+      }else if(type==='completed'){
+        this.type='completed'
+      }
+      console.log(type)
+    }
+  },
   computed: {
-    remainder: {
-      return this.list.find(item => item.isDone === false).length
-
+    // 剩余数
+    remainder() {
+      return this.list.filter(item => item.isDone === false).length
     }
   }
 }

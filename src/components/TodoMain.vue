@@ -31,7 +31,6 @@ export default {
   name: "",
   data() {
     return {
-      // a:
     }
   },
   props: {
