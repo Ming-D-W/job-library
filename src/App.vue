@@ -1,7 +1,7 @@
 <template>
   <section class="todoapp">
     <TodoHeader @submit="submit"></TodoHeader>
-    <TodoMain :list="list" :type="type" @deleteItem="deleteItem" @selectedItems="selectedItems"></TodoMain>
+    <TodoMain :list="list" :type="type" @selectAll="selectAll" @deleteItem="deleteItem" @selectedItems="selectedItems"></TodoMain>
     <TodoFooter :list="list" :type="type" @filterType="filterType" @purgeComplet="purgeComplet"></TodoFooter>
 
 
@@ -63,6 +63,9 @@ export default {
     // 切换动态class
     filterType(type) {
       this.type = type
+    },
+    selectAll(val){
+      this.list.forEach(item => item.isDone = val)
     }
   }
 }
