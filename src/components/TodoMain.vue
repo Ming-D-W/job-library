@@ -2,7 +2,7 @@
   <div>
     <!-- 主体部分 -->
     <section class="main">
-      <input id="toggle-all" v-model="selectAll" class="toggle-all" type="checkbox"/>
+      <input id="toggle-all" class="toggle-all" type="checkbox"/>
       <label for="toggle-all">Mark all as complete</label>
       <ul class="todo-list">
         <!-- 当任务已完成，可以给 li 加上 completed 类，会让元素加上删除线 -->
@@ -51,15 +51,7 @@ export default {
     },
   },
   computed: {
-    selectAll: {
-      get() {
-        return this.list.every(item => item.isDone === true)
-      },
-      set(val) {
-        // this.list.forEach(item => item.isDone = val)
-        this.$emit('selectAll', val)
-      }
-    }
+
   }
 }
 </script>

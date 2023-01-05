@@ -1,7 +1,7 @@
 <template>
   <section class="todoapp">
-    <TodoHeader @addItem="addItemFn"></TodoHeader>
-    <TodoMain :list="list" @deleteItem="deleteItem" @selectAll="selectAllFn"></TodoMain>
+    <TodoHeader></TodoHeader>
+    <TodoMain :list="list" @deleteItem="deleteItem" ></TodoMain>
     <TodoFooter  :list="list"></TodoFooter>
 
 
@@ -29,17 +29,7 @@ export default {
       const index = this.list.findIndex(item => item.id === id)
       this.list.splice(index, 1);
     },
-    selectAllFn(val){
-      this.list.forEach(item => (item.isDone = val))
-    },
-    addItemFn(newTask){
-      this.list.push({
-        id: !this.list.length ? 1 : this.list.at(-1).id + 1,
-        name:newTask,
-        isDone: false
-      })
-      console.log(this.list)
-    }
+
   }
 }
 </script>
