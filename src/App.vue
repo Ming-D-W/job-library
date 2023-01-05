@@ -1,25 +1,14 @@
 <template>
-  <TodoHeader/>
-  <TodoMain/>
-  <TodoFooter/>
+  <section class="todoapp">
+
+
+
+
+  </section>
 </template>
 
 <script>
-import TodoFooter from "@/components/TodoFooter.vue";
-import TodoHeader from "@/components/TodoHeader.vue";
-import TodoMain from "@/components/TodoMain.vue";
-
-export default {
-  name: "",
-  components: {TodoMain, TodoHeader, TodoFooter},
-  data() {
-    return {}
-  },
-  methods: {},
-  computed: {}
-}
+export default {}
 </script>
 
-<style>
-
-</style>
+<style></style>
