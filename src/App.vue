@@ -30,6 +30,7 @@ export default {
       const index = this.list.findIndex(item => item.id === id)
       this.list.splice(index, 1);
     },
+    // 勾选任务项
     selectedItems(id) {
       this.list.forEach(item => {
         if (item.id === id) {
@@ -37,13 +38,14 @@ export default {
         }
       })
     },
-submit(newTask) {
+    // 添加任务项
+    submit(newTask) {
       this.list.push({
-        id:this.list.length+1,
-        name:newTask,
+        id: this.list.length + 1,
+        name: newTask,
         isDone: false
       })
-}
+    }
   }
 }
 </script>
