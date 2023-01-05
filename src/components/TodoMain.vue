@@ -1,95 +1,26 @@
 <template>
-  <div>
-    <!-- 主体部分 -->
-    <section class="main">
-      <input id="toggle-all" v-model="selectAll" class="toggle-all" type="checkbox"/>
-      <label for="toggle-all">Mark all as complete</label>
-      <ul class="todo-list">
-        <!-- 当任务已完成，可以给 li 加上 completed 类，会让元素加上删除线 -->
-        <!--        <li class="completed">-->
-        <!--          <div class="view">-->
-        <!--            <input class="toggle" type="checkbox" checked/>-->
-        <!--            <label>读万卷书</label>-->
-        <!--            <button class="destroy"></button>-->
-        <!--          </div>-->
-        <!--        </li>-->
-        <!--        <li>-->
-        <!--          <div class="view">-->
-        <!--            <input class="toggle" type="checkbox"/>-->
-        <!--            <label>行万里路</label>-->
-        <!--            <button class="destroy"></button>-->
-        <!--          </div>-->
-        <!--        </li>-->
-        <li :class="{completed:item.isDone}" v-for="item in showList" :key="item.id">
-          <div class="view">
-            <input class="toggle" type="checkbox" :checked="item.isDone" @change="selectedItems(item.id)"/>
-            <label>{{ item.name }}</label>
-            <button class="destroy" @click="deleteItem(item.id)"></button>
-          </div>
-        </li>
-      </ul>
-    </section>
-  </div>
+    <div>
+
+    </div>
 </template>
 
 <script>
 export default {
-  name: "",
-  props: {
-    type:{
-      type:String
+    name: "",
+    data() {
+        return {
+
+        }
     },
-    list: {
-      type: Array,
-      required: true
-    }
-  },
-  components: {},
-  data() {
-    return {}
-  },
-  methods: {
-    deleteItem(id) {
-      this.$emit('deleteItem', id)
+    methods: {
+
     },
-    selectedItems(id){
-      this.$emit('selectedItems',id)
+    computed: {
+
     }
-  },
-  computed: {
-    showList(){
-      if(this.type==='active'){
-        return this.list.filter(item=>!item.isDone)
-      }else if(this.type==='completed'){
-        return this.list.filter(item=>item.isDone)
-      }
-      return this.list
-    },
-    // 全选
-    selectAll: {
-      get() {
-        return this.list.every(item => item.isDone === true)
-      },
-      set(val) {
-        // this.list.forEach(item => item.isDone = val)
-        this.$emit('selectAll', val)
-      }
-    }
-  }
 }
 </script>
 
-<style lang="less">
-.main {
-  .toggle-all {
-    pointer-events: none;
+<style>
 
-    &::before {
-      pointer-events: auto;
-    }
-  }
-}
-
-/*父元素添加：pointer-events: none;*/
-/*伪元素添加：pointer-events: auto;*/
 </style>
