@@ -20,11 +20,24 @@
 <script>
 export default {
   name: "",
+  props: {
+    list: {
+      type: Array,
+      required: true
+    }
+  },
   data() {
-    return {}
+    return {
+      type: 'all'
+    }
   },
   methods: {},
-  computed: {}
+  computed: {
+    remainder: {
+      return this.list.find(item => item.isDone === false).length
+
+    }
+  }
 }
 </script>
 
