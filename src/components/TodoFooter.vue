@@ -1,8 +1,8 @@
 <template>
   <div>
     <!-- 底部部分 -->
-    <footer class="footer">
-      <span class="todo-count" ><strong>0</strong>剩余</span>
+    <footer class="footer" v-if="this.list.length">
+      <span class="todo-count"><strong>{{ remainder }}</strong>剩余</span>
       <ul class="filters">
         <li>
           <a class="selected" href="#/">全部</a>
@@ -14,7 +14,7 @@
           <a href="#/completed">已完成</a>
         </li>
       </ul>
-      <button class="clear-completed">清除已完成</button>
+      <button v-show="purgeComplet" class="clear-completed">清除已完成</button>
     </footer>
 
   </div>
@@ -33,11 +33,16 @@ export default {
   data() {
     return {}
   },
-  methods: {
-
-  },
+  methods: {},
   computed: {
-
+    // 剩余数
+    remainder() {
+      return this.list.filter(item => item.isDone === false).length
+    },
+    // 清楚已完成显示隐藏
+    purgeComplet() {
+      return this.list.some(item => item.isDone===true)
+    }
   }
 }
 </script>

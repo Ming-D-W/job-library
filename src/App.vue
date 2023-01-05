@@ -40,11 +40,16 @@ export default {
     },
     // 添加任务项
     submit(newTask) {
-      this.list.push({
-        id: this.list.length + 1,
+      if(!newTask){
+        alert('请输入内容')
+        return
+      }
+      this.list.unshift({
+        id: Date.now(),
         name: newTask,
         isDone: false
       })
+      // console.log(this.list)
     }
   }
 }
