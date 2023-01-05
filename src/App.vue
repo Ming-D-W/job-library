@@ -1,8 +1,8 @@
 <template>
   <section class="todoapp">
-    <TodoHeader></TodoHeader>
-    <TodoMain :list="list" @deleteItem="deleteItem" ></TodoMain>
-    <TodoFooter  :list="list"></TodoFooter>
+    <TodoHeader @submit="submit"></TodoHeader>
+    <TodoMain :list="list" @deleteItem="deleteItem" @selectedItems="selectedItems"></TodoMain>
+    <TodoFooter :list="list"></TodoFooter>
 
 
   </section>
@@ -24,12 +24,26 @@ export default {
       ]
     }
   },
-  methods:{
-    deleteItem(id){
+  methods: {
+    // 删除逻辑
+    deleteItem(id) {
       const index = this.list.findIndex(item => item.id === id)
       this.list.splice(index, 1);
     },
-
+    selectedItems(id) {
+      this.list.forEach(item => {
+        if (item.id === id) {
+          item.isDone = !item.isDone
+        }
+      })
+    },
+submit(newTask) {
+      this.list.push({
+        id:this.list.length+1,
+        name:newTask,
+        isDone: false
+      })
+}
   }
 }
 </script>

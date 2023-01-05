@@ -22,7 +22,7 @@
         <!--        </li>-->
         <li :class="{completed:item.isDone}" v-for="item in list" :key="item.id">
           <div class="view">
-            <input class="toggle" type="checkbox" v-model="item.isDone"/>
+            <input class="toggle" type="checkbox" :checked="item.isDone" @change="selectedItems(item.id)"/>
             <label>{{ item.name }}</label>
             <button class="destroy" @click="deleteItem(item.id)"></button>
           </div>
@@ -49,6 +49,9 @@ export default {
     deleteItem(id) {
       this.$emit('deleteItem', id)
     },
+    selectedItems(id){
+      this.$emit('selectedItems',id)
+    }
   },
   computed: {
 
