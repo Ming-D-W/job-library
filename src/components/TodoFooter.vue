@@ -1,6 +1,6 @@
 <template>
   <!-- 底部部分 -->
-  <footer class="footer">
+  <footer class="footer" v-if="this.list.length">
     <span class="todo-count"><strong>{{ remainder }}</strong>剩余</span>
     <ul class="filters">
       <li>
@@ -13,7 +13,7 @@
         <a :class="{completed:type==='completed'}" href="#/completed" @click="switchState('completed')">已完成</a>
       </li>
     </ul>
-    <button class="clear-completed" @click="purgeComplet">清除已完成</button>
+    <button v-show="clearShowHide" class="clear-completed" @click="purgeComplet">清除已完成</button>
   </footer>
 </template>
 
@@ -21,6 +21,9 @@
 export default {
   name: "",
   props: {
+    type:{
+      type:String
+    },
     list: {
       type: Array,
       required: true
@@ -28,7 +31,7 @@ export default {
   },
   data() {
     return {
-      type: 'all'
+      // type: 'all'
     }
   },
   methods: {
@@ -36,14 +39,19 @@ export default {
       this.$emit('purgeComplet')
     },
     switchState(type) {
-      this.type = type
-      console.log(type)
+      this.$emit('switchState',type)
+      // this.type = type
+      // console.log(type)
     }
   },
   computed: {
     // 剩余数
     remainder() {
       return this.list.filter(item => item.isDone === false).length
+    },
+    // 清除已完成显示隐藏
+    clearShowHide(){
+      return this.list.some(item=>item.isDone===true)
     }
   }
 }

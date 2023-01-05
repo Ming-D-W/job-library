@@ -2,11 +2,14 @@
   <section class="todoapp">
     <TodoHeader @addTask="addTask"/>
     <TodoMain :list="list"
+              :type="type"
               @check="check"
               @deleteItem="deleteItem"
               @selectAll="selectAll"/>
     <TodoFooter :list="list"
-                @purgeComplet="purgeComplet"/>
+                :type="type"
+                @purgeComplet="purgeComplet"
+    @switchState="switchState"/>
   </section>
 </template>
 
@@ -19,11 +22,13 @@ export default {
   components: {TodoHeader, TodoMain, TodoFooter},
   data() {
     return {
-      list: [
-        {id: 1, name: '吃饭', isDone: true},
-        {id: 2, name: '睡觉', isDone: false},
-        {id: 3, name: '打豆豆', isDone: true}
-      ]
+      type: 'all',
+      list: JSON.parse(localStorage.getItem('todoList')) || [],
+      // list: [
+      //   {id: 1, name: '吃饭', isDone: true},
+      //   {id: 2, name: '睡觉', isDone: false},
+      //   {id: 3, name: '打豆豆', isDone: true}
+      // ]
     }
   },
   methods: {
@@ -51,6 +56,19 @@ export default {
     // 清除已完成
     purgeComplet(){
       this.list = this.list.filter(item => !item.isDone)
+    },
+    // 提升type
+    switchState(type){
+      this.type = type
+
+    }
+  },
+  watch:{
+    list:{
+      handler(val){
+        // console.log(val)
+        localStorage.setItem('todoList', JSON.stringify(val))
+      }
     }
   }
 }

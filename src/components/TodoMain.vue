@@ -3,7 +3,7 @@
   <section class="main">
     <input id="toggle-all" class="toggle-all" type="checkbox" v-model="selectAll"/>
     <label for="toggle-all">Mark all as complete</label>
-    <ul class="todo-list" v-for="item in list" :key="item.id">
+    <ul class="todo-list" v-for="item in showList" :key="item.id">
       <!-- 当任务已完成，可以给 li 加上 completed 类，会让元素加上删除线 -->
       <!--      <li class="completed">-->
       <!--        <div class="view">-->
@@ -30,10 +30,12 @@
 export default {
   name: "",
   data() {
-    return {
-    }
+    return {}
   },
   props: {
+    type: {
+      type: String
+    },
     list: {
       type: Array,
       required: true
@@ -55,6 +57,15 @@ export default {
       set(val) {
         this.$emit('selectAll', val)
       }
+    },
+    // 过滤功能
+    showList() {
+      if (this.type === 'active') {
+        return this.list.filter(item => item.isDone === false)
+      } else if (this.type === 'completed') {
+        return this.list.filter(item => item.isDone === true)
+      }
+      return this.list
     }
   }
 }
