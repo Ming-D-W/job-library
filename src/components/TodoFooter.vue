@@ -21,8 +21,8 @@
 export default {
   name: "",
   props: {
-    type:{
-      type:String
+    type: {
+      type: String
     },
     list: {
       type: Array,
@@ -39,7 +39,7 @@ export default {
       this.$emit('purgeComplet')
     },
     switchState(type) {
-      this.$emit('switchState',type)
+      this.$emit('switchState', type)
       // this.type = type
       // console.log(type)
     }
@@ -50,8 +50,8 @@ export default {
       return this.list.filter(item => item.isDone === false).length
     },
     // 清除已完成显示隐藏
-    clearShowHide(){
-      return this.list.some(item=>item.isDone===true)
+    clearShowHide() {
+      return this.list.some(item => item.isDone === true)
     }
   }
 }

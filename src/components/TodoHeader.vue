@@ -14,14 +14,14 @@ export default {
   name: "",
   data() {
     return {
-      newTest:''
+      newTest: ''
     }
   },
   methods: {
-    addTask(newTest){
+    addTask(newTest) {
       // console.log(newTest)
-      this.$emit('addTask',newTest)
-      this.newTest=''
+      this.$emit('addTask', newTest)
+      this.newTest = ''
     }
   },
   computed: {}

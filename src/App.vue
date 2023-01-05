@@ -9,7 +9,7 @@
     <TodoFooter :list="list"
                 :type="type"
                 @purgeComplet="purgeComplet"
-    @switchState="switchState"/>
+                @switchState="switchState"/>
   </section>
 </template>
 
@@ -54,18 +54,18 @@ export default {
       this.list.forEach(item => item.isDone = val)
     },
     // 清除已完成
-    purgeComplet(){
+    purgeComplet() {
       this.list = this.list.filter(item => !item.isDone)
     },
     // 提升type
-    switchState(type){
+    switchState(type) {
       this.type = type
 
     }
   },
-  watch:{
-    list:{
-      handler(val){
+  watch: {
+    list: {
+      handler(val) {
         // console.log(val)
         localStorage.setItem('todoList', JSON.stringify(val))
       }
