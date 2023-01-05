@@ -20,7 +20,7 @@
         <!--            <button class="destroy"></button>-->
         <!--          </div>-->
         <!--        </li>-->
-        <li :class="{completed:item.isDone}" v-for="item in list" :key="item.id">
+        <li :class="{completed:item.isDone}" v-for="item in showList" :key="item.id">
           <div class="view">
             <input class="toggle" type="checkbox" :checked="item.isDone" @change="selectedItems(item.id)"/>
             <label>{{ item.name }}</label>
@@ -36,6 +36,9 @@
 export default {
   name: "",
   props: {
+    type:{
+      type:String
+    },
     list: {
       type: Array,
       required: true
@@ -54,7 +57,14 @@ export default {
     }
   },
   computed: {
-
+    showList(){
+      if(this.type==='active'){
+        return this.list.filter(item=>!item.isDone)
+      }else if(this.type==='completed'){
+        return this.list.filter(item=>item.isDone)
+      }
+      return this.list
+    }
   }
 }
 </script>

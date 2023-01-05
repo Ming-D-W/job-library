@@ -1,8 +1,8 @@
 <template>
   <section class="todoapp">
     <TodoHeader @submit="submit"></TodoHeader>
-    <TodoMain :list="list" @deleteItem="deleteItem" @selectedItems="selectedItems"></TodoMain>
-    <TodoFooter :list="list" @purgeComplet="purgeComplet"></TodoFooter>
+    <TodoMain :list="list" :type="type" @deleteItem="deleteItem" @selectedItems="selectedItems"></TodoMain>
+    <TodoFooter :list="list" :type="type" @filterType="filterType" @purgeComplet="purgeComplet"></TodoFooter>
 
 
   </section>
@@ -17,11 +17,16 @@ export default {
   components: {TodoFooter, TodoMain, TodoHeader},
   data() {
     return {
-      list: [
-        {id: 1, name: '吃饭', isDone: true},
-        {id: 2, name: '睡觉', isDone: false},
-        {id: 3, name: '打豆豆', isDone: true}
-      ]
+      type: 'all',
+      list: JSON.parse(localStorage.getItem('todo')) || []
+    }
+  },
+  watch: {
+    list: {
+      handler(newList) {
+        localStorage.setItem('todo', JSON.stringify(newList))
+      },
+      deep: true
     }
   },
   methods: {
@@ -40,7 +45,7 @@ export default {
     },
     // 添加任务项
     submit(newTask) {
-      if(!newTask){
+      if (!newTask) {
         alert('请输入内容')
         return
       }
@@ -52,8 +57,12 @@ export default {
       // console.log(this.list)
     },
     // 清除已完成
-    purgeComplet(){
-      this.list= this.list.filter(item=>item.isDone===false)
+    purgeComplet() {
+      this.list = this.list.filter(item => item.isDone === false)
+    },
+    // 切换动态class
+    filterType(type) {
+      this.type = type
     }
   }
 }

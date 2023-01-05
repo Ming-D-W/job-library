@@ -11,7 +11,7 @@
           <a :class="{selected:type==='active'}" href="#/active" @click="filterType('active')">进行中</a>
         </li>
         <li>
-          <a :class="{selected:type==='computed'}" href="#/completed" @click="filterType('computed')">已完成</a>
+          <a :class="{selected:type==='computed'}" href="#/completed" @click="filterType('completed')">已完成</a>
         </li>
       </ul>
       <button v-show="purgeCompletShow" @click="purgeComplet" class="clear-completed">清除已完成</button>
@@ -27,18 +27,26 @@ export default {
     list: {
       type: Array,
       required: true
+    },
+    type: {
+      type: String
     }
   },
   components: {},
   data() {
     return {
-      type:'all'
+      // type:'all'
     }
   },
   methods: {
     // 清除已完成
-    purgeComplet(){
+    purgeComplet() {
       this.$emit('purgeComplet')
+    },
+    // 切换动态class
+    filterType(type) {
+      // this.type=type
+      this.$emit('filterType', type)
     }
   },
   computed: {
@@ -48,11 +56,8 @@ export default {
     },
     // 清楚已完成按键显示隐藏
     purgeCompletShow() {
-      return this.list.some(item => item.isDone===true)
+      return this.list.some(item => item.isDone === true)
     },
-    filterType(type){
-      this.type=type
-    }
   },
 
 }
