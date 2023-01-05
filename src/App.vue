@@ -2,7 +2,7 @@
   <section class="todoapp">
     <TodoHeader @submit="submit"></TodoHeader>
     <TodoMain :list="list" @deleteItem="deleteItem" @selectedItems="selectedItems"></TodoMain>
-    <TodoFooter :list="list"></TodoFooter>
+    <TodoFooter :list="list" @purgeComplet="purgeComplet"></TodoFooter>
 
 
   </section>
@@ -50,6 +50,10 @@ export default {
         isDone: false
       })
       // console.log(this.list)
+    },
+    // 清除已完成
+    purgeComplet(){
+      this.list= this.list.filter(item=>item.isDone===false)
     }
   }
 }

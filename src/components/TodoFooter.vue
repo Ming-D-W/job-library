@@ -5,16 +5,16 @@
       <span class="todo-count"><strong>{{ remainder }}</strong>剩余</span>
       <ul class="filters">
         <li>
-          <a class="selected" href="#/">全部</a>
+          <a :class="{selected:type==='all'}" href="#/" @click="filterType('all')">全部</a>
         </li>
         <li>
-          <a href="#/active">进行中</a>
+          <a :class="{selected:type==='active'}" href="#/active" @click="filterType('active')">进行中</a>
         </li>
         <li>
-          <a href="#/completed">已完成</a>
+          <a :class="{selected:type==='computed'}" href="#/completed" @click="filterType('computed')">已完成</a>
         </li>
       </ul>
-      <button v-show="purgeComplet" class="clear-completed">清除已完成</button>
+      <button v-show="purgeCompletShow" @click="purgeComplet" class="clear-completed">清除已完成</button>
     </footer>
 
   </div>
@@ -31,19 +31,30 @@ export default {
   },
   components: {},
   data() {
-    return {}
+    return {
+      type:'all'
+    }
   },
-  methods: {},
+  methods: {
+    // 清除已完成
+    purgeComplet(){
+      this.$emit('purgeComplet')
+    }
+  },
   computed: {
     // 剩余数
     remainder() {
       return this.list.filter(item => item.isDone === false).length
     },
-    // 清楚已完成显示隐藏
-    purgeComplet() {
+    // 清楚已完成按键显示隐藏
+    purgeCompletShow() {
       return this.list.some(item => item.isDone===true)
+    },
+    filterType(type){
+      this.type=type
     }
-  }
+  },
+
 }
 </script>
 
