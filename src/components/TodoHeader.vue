@@ -20,7 +20,7 @@ export default {
   },
   methods: {
     submit() {
-  this.$emit('submit',this.newTask)
+      this.$emit('submit', this.newTask)
     }
   },
   computed: {}
