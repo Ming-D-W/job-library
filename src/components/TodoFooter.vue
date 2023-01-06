@@ -4,13 +4,13 @@
     <span class="todo-count"><strong>{{ remainder }}</strong>剩余</span>
     <ul class="filters">
       <li>
-        <a :class="{selected:type==='all'}" href="#/" @click="switchState('all')">全部</a>
+        <a :class="{selected:value==='all'}" href="#/" @click="switchState('all')">全部</a>
       </li>
       <li>
-        <a :class="{active:type==='active'}" href="#/active" @click="switchState('active')">进行中</a>
+        <a :class="{active:value==='active'}" href="#/active" @click="switchState('active')">进行中</a>
       </li>
       <li>
-        <a :class="{completed:type==='completed'}" href="#/completed" @click="switchState('completed')">已完成</a>
+        <a :class="{completed:value==='completed'}" href="#/completed" @click="switchState('completed')">已完成</a>
       </li>
     </ul>
     <button v-show="clearShowHide" class="clear-completed" @click="purgeComplet">清除已完成</button>
@@ -21,9 +21,12 @@
 export default {
   name: "",
   props: {
-    type:{
+    value:{
       type:String
     },
+    // type: {
+    //   type: String
+    // },
     list: {
       type: Array,
       required: true
@@ -39,7 +42,7 @@ export default {
       this.$emit('purgeComplet')
     },
     switchState(type) {
-      this.$emit('switchState',type)
+      this.$emit('input', type)
       // this.type = type
       // console.log(type)
     }
@@ -50,8 +53,8 @@ export default {
       return this.list.filter(item => item.isDone === false).length
     },
     // 清除已完成显示隐藏
-    clearShowHide(){
-      return this.list.some(item=>item.isDone===true)
+    clearShowHide() {
+      return this.list.some(item => item.isDone === true)
     }
   }
 }
