@@ -1,0 +1,51 @@
+{
+  "id": "3855832",
+  "name": "商品列表vue进阶",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "827647",
+      "name": "男",
+      "font_class": "nan",
+      "unicode": "e661",
+      "unicode_decimal": 58977
+    },
+    {
+      "icon_id": "827648",
+      "name": "女",
+      "font_class": "nv",
+      "unicode": "e662",
+      "unicode_decimal": 58978
+    },
+    {
+      "icon_id": "1817752",
+      "name": "更新",
+      "font_class": "gengxin",
+      "unicode": "e628",
+      "unicode_decimal": 58920
+    },
+    {
+      "icon_id": "586300",
+      "name": "五角星",
+      "font_class": "star",
+      "unicode": "e61b",
+      "unicode_decimal": 58907
+    },
+    {
+      "icon_id": "3858848",
+      "name": "赞",
+      "font_class": "zan",
+      "unicode": "e60b",
+      "unicode_decimal": 58891
+    },
+    {
+      "icon_id": "12095300",
+      "name": "火",
+      "font_class": "huo",
+      "unicode": "e65b",
+      "unicode_decimal": 58971
+    }
+  ]
+}
