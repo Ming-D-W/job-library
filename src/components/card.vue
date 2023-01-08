@@ -22,11 +22,6 @@ export default {
   props: {
     list: Array
   },
-  data() {
-    return {}
-  },
-  methods: {},
-  computed: {}
 }
 </script>
 
@@ -36,11 +31,16 @@ export default {
   background-color: #fff;
   margin: 16px auto;
   border-radius: 10px;
+  // 想半天才想起来
+  overflow: hidden;
+
   .title {
     height: 50px;
     line-height: 50px;
-    padding-left: 20px;
+    padding: 0 20px;
     color: #fff;
+    display: flex;
+    justify-content: space-between;
     font-size: 20px;
     font-weight: bold;
     background-image: linear-gradient(to right, #1B79FB, #5DD1FD);
@@ -50,15 +50,18 @@ export default {
     .box_0 {
       display: flex;
       justify-content: space-between;
+      align-content: center;
       border-bottom: 1px solid silver;
-      height: 60px;
-      line-height: 60px;
+      padding: 20px 0;
       width: 270px;
       margin: 0 auto;
+      overflow: hidden;
+      color: #000;
       .right {
         font-weight: bold;
       }
     }
+
     .box_0:last-child {
       border-bottom: none;
     }
