@@ -124,7 +124,7 @@ export default {
 
 <style scoped lang="less">
 .box {
-  border: 2px red solid;
+  border: 2px #F4F6FA solid;
   height: 1000px;
   width: 400px;
   background-color: #F4F6FA;
