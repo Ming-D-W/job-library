@@ -1,47 +1,43 @@
 <template>
   <div>
-    <div class="footer_wrap">
-      <a href="#/find">发现音乐</a>
-      <a href="#/my">我的音乐</a>
-      <a href="#/part">朋友</a>
+    <div v-for="(item, index) in items" :key="index">
+      {{ item.num1 }} + {{ item.num2 }} =
+      <input v-model.number="item.answer">
+      <button  @click="checkAnswer(index)">提交</button>
     </div>
-    <div class="top">
-      <router-view></router-view>
-    </div>
+    <hr>
+    <span v-for="(item, index) in items" :key="item.id">
+      {{ index + 1 }}:
+      <span v-if="item.correct === null" style="color: #D2E0E6">未完成</span>
+      <span v-else-if="item.correct" style="color: #46DD71">正确</span>
+      <span v-else style="color: #F62838">错误</span>
+    </span>
   </div>
 </template>
 
 <script>
-export default {};
+export default {
+  data() {
+    return {
+      items: [],
+    }
+  },
+  created() {
+    for (let i = 0; i < 6; i++) {
+      this.items.push({
+        num1: Math.floor(Math.random() * 10),
+        num2: Math.floor(Math.random() * 10),
+        answer: '',
+        correct: null,
+        id:Math.random().toString(16).slice(2)
+      })
+    }
+  },
+  methods: {
+    checkAnswer(index) {
+      let item = this.items[index]
+      item.correct = item.answer === item.num1 + item.num2
+    }
+  }
+}
 </script>
-
-<style scoped>
-.footer_wrap {
-  position: fixed;
-  left: 0;
-  top: 0;
-  display: flex;
-  width: 100%;
-  text-align: center;
-  background-color: #333;
-  color: #ccc;
-}
-
-.footer_wrap a {
-  flex: 1;
-  text-decoration: none;
-  padding: 20px 0;
-  line-height: 20px;
-  background-color: #333;
-  color: #ccc;
-  border: 1px solid black;
-}
-
-.footer_wrap a:hover {
-  background-color: #555;
-}
-
-.top {
-  padding-top: 62px;
-}
-</style>
