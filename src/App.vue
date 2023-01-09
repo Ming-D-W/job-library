@@ -3,7 +3,7 @@
     <div v-for="(item, index) in items" :key="index">
       {{ item.num1 }} + {{ item.num2 }} =
       <input v-model.number="item.answer">
-      <button  @click="checkAnswer(index)">提交</button>
+      <button @click="checkAnswer(index)">提交</button>
     </div>
     <hr>
     <span v-for="(item, index) in items" :key="item.id">
@@ -29,7 +29,7 @@ export default {
         num2: Math.floor(Math.random() * 10),
         answer: '',
         correct: null,
-        id:Math.random().toString(16).slice(2)
+        id: Math.random().toString(16).slice(2)
       })
     }
   },
