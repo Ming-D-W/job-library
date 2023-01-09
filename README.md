@@ -1,19 +1,3 @@
 # hm-router
 
-## Project setup
-```
-npm install
-```
-
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
-
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+![image-20230109205138397](https://photo-album-1314189846.cos.ap-shanghai.myqcloud.com/202301092051491.png)
