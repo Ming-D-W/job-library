@@ -38,7 +38,7 @@
             <div class="topnav-nav-right">创作者中心</div>
           </a>
           <div class="topnav-nav-input">
-            <i class="iconfont">&#xe6e7</i>
+            <i>🔍</i>
             <input type="text" placeholder="音乐/视频/电台/用户">
           </div>
         </div>
