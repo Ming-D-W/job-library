@@ -3,8 +3,8 @@
   <header class="header">
     <h1>todos</h1>
     <input class="new-todo" placeholder="请输入任务名称"
-           v-model="newTest"
-           @keyup.enter="addTask(newTest)"
+           v-model.trim="newTest"
+           @keyup.enter="addTask"
            autofocus/>
   </header>
 </template>
@@ -14,17 +14,15 @@ export default {
   name: "",
   data() {
     return {
-      newTest:''
+      newTest: ''
     }
   },
   methods: {
-    addTask(newTest){
-      // console.log(newTest)
-      this.$emit('addTask',newTest)
-      this.newTest=''
+    addTask() {
+      this.$store.commit('addTask', this.newTest)
+      this.newTest = ''
     }
   },
-  computed: {}
 }
 </script>
 

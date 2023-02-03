@@ -1,7 +1,7 @@
 <template>
   <!-- 主体部分 -->
   <section class="main">
-    <input id="toggle-all" class="toggle-all" type="checkbox" v-model="selectAll"/>
+    <input id="toggle-all" class="toggle-all" type="checkbox" />
     <label for="toggle-all">Mark all as complete</label>
     <ul class="todo-list" v-for="item in showList" :key="item.id">
       <!-- 当任务已完成，可以给 li 加上 completed 类，会让元素加上删除线 -->
@@ -29,45 +29,19 @@
 <script>
 export default {
   name: "",
-  data() {
-    return {}
-  },
-  props: {
-    type: {
-      type: String
-    },
-    list: {
-      type: Array,
-      required: true
+  computed: {
+    showList() {
+      return this.$store.getters.showList
     }
   },
   methods: {
-    check(id) {
-      this.$emit('check', id)
-    },
     deleteItem(id) {
-      this.$emit('deleteItem', id)
+      this.$store.commit('destroy', id)
+    },
+    check(id) {
+      this.$store.commit('change', id)
     }
   },
-  computed: {
-    selectAll: {
-      get() {
-        return this.list.every(item => item.isDone === true)
-      },
-      set(val) {
-        this.$emit('selectAll', val)
-      }
-    },
-    // 过滤功能
-    showList() {
-      if (this.type === 'active') {
-        return this.list.filter(item => item.isDone === false)
-      } else if (this.type === 'completed') {
-        return this.list.filter(item => item.isDone === true)
-      }
-      return this.list
-    }
-  }
 }
 </script>
 
