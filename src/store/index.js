@@ -13,11 +13,10 @@ export default new Vuex.Store({
         type: 'all'
     },
     mutations: {
-        destroy(state, id) {
-            // this.list = this.list.filter(item => item.id !== id)
+        deleteItem(state, id) {
             state.list = state.list.filter((item) => item.id !== id)
         },
-        change(state, id) {
+        check(state, id) {
             const result = state.list.find(item => item.id === id)
             result.isDone = !result.isDone
             console.log(result)
@@ -29,11 +28,10 @@ export default new Vuex.Store({
                 isDone: false
             })
         },
-        clearFn(state) {
-            // console.log('清空')
+        purgeComplet(state) {
             state.list = state.list.filter((item) => item.isDone === false)
         },
-        changeType(state, type) {
+        switchState(state, type) {
             state.type = type
         },
     },

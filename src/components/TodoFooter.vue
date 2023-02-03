@@ -22,10 +22,10 @@ export default {
   name: "",
   methods: {
     purgeComplet() {
-      this.$store.commit('clearFn')
+      this.$store.commit('purgeComplet')
     },
     switchState(type) {
-      this.$store.commit('changeType', type)
+      this.$store.commit('switchState', type)
       console.log(this.$store.getters.showList)
       console.log(this.$store.state.type)
     },

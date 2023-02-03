@@ -36,10 +36,10 @@ export default {
   },
   methods: {
     deleteItem(id) {
-      this.$store.commit('destroy', id)
+      this.$store.commit('deleteItem', id)
     },
     check(id) {
-      this.$store.commit('change', id)
+      this.$store.commit('check', id)
     }
   },
 }
