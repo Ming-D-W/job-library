@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+ <trees>
+     <tree path="/src/utils/request.js" title="axios模块" extension="js"/>
+     <tree path="/src/utils/storage.js" title="本地存储" extension="js"/>
+ </trees>
