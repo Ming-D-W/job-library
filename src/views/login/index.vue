@@ -76,13 +76,13 @@ export default {
 
   .el-card {
     width: 420px;
-    position: absolute;
+    position: relative;
 
     .logo {
       margin: 0 auto;
-      position: relative;
+      //position: absolute;
       transform: translateY(-50%);
-      top: -25px;
+      top: -50px;
       //background-color: #EEEEEE;
 
       .logo-img {
