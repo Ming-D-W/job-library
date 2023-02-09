@@ -1,15 +1,15 @@
 <template>
   <div class="login-page">
-    <el-card>
+    <div class="card">
       <div class="logo">
-        <el-avatar class="logo-img" :size="100" :src=url fit="cover" style="border:4px solid #fff"></el-avatar>
+        <img :src=url>
       </div>
-      <el-form  ref="form" :model="form" :rules="rules" autocomplete="off">
-        <el-form-item  prop="username">
+      <el-form ref="form" :model="form" :rules="rules" autocomplete="off">
+        <el-form-item prop="username">
           <el-input prefix-icon="el-icon-user-solid" v-model="form.username"></el-input>
         </el-form-item>
 
-        <el-form-item  prop="password">
+        <el-form-item prop="password">
           <el-input v-model="form.password" prefix-icon="el-icon-lock" type="password"></el-input>
         </el-form-item>
 
@@ -18,11 +18,12 @@
           <el-button @click="reset" type="info">重 置</el-button>
         </el-form-item>
       </el-form>
-    </el-card>
+    </div>
   </div>
 </template>
 
 <script>
+
 import { login } from '@/api/user'
 
 export default {
@@ -53,7 +54,7 @@ export default {
         if (valid) {
           const res = await login(this.form)
           this.$store.commit('user/setUserToken', res.data.token)
-          this.$router.push('/')
+          await this.$router.push('/')
         }
       } catch (e) {
         console.log(e)
@@ -74,22 +75,24 @@ export default {
   justify-content: space-around;
   background-color: rgba(52, 76, 106);
 
-  .el-card {
+  .card {
     width: 420px;
-    position: relative;
-
+    position: absolute;
+    background-color: #FFFFFF;
     .logo {
+      height: 130px;
+      width: 130px;
       margin: 0 auto;
-      //position: absolute;
       transform: translateY(-50%);
-      top: -50px;
-      //background-color: #EEEEEE;
+      position: relative;
 
-      .logo-img {
-        display: block;
-        margin: 0 auto;
+      img {
+        width: 100%;
+        height: 100%;
         background-color: #EEEEEE;
         box-shadow: 0 0 15px -5px #000;
+        border: 4px solid #fff;
+        border-radius: 50%;
       }
     }
   }

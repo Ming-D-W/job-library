@@ -1,4 +1,4 @@
-import { getToken, setToken } from '@/utils/storage'
+import { delToken, getToken, setToken } from '@/utils/storage'
 
 export default {
   namespaced: true,
@@ -11,6 +11,10 @@ export default {
     setUserToken (state, payload) {
       state.token = payload
       setToken(payload)
+    },
+    delToken (state) {
+      state.token = null
+      delToken()
     }
   }
 }

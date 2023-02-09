@@ -29,7 +29,8 @@ import {
   MessageBox,
   Message,
   Drawer,
-  MenuItem
+  MenuItem,
+  Submenu, MenuItemGroup
 } from 'element-ui'
 
 Vue.use(Breadcrumb)
@@ -59,6 +60,8 @@ Vue.use(Main)
 Vue.use(Footer)
 Vue.use(Link)
 Vue.use(Image)
+Vue.use(Submenu)
+Vue.use(MenuItemGroup)
 
 Vue.use(Loading.directive)
 
