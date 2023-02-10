@@ -20,17 +20,20 @@
           unique-opened
           :collapse="isCollapse"
           :collapse-transition="false"
-          router>
-          <el-menu-item index="1">
+          router
+          :default-active="activePath">
+          <el-menu-item index="/Welcome">
             <i class="el-icon-s-custom"></i>
             <span slot="title">首页</span>
           </el-menu-item>
+<!--          一级菜单-->
           <el-submenu v-for="item in menuList" :key="item.id" :index="item.path">
             <template slot="title">
               <i class="el-icon-user-solid"></i>
               <span>{{ item.authName }}</span>
             </template>
-            <el-menu-item v-for="item2 in item.children" :key="item2.id" :index="'/'+item2.path">
+<!--            二级菜单-->
+            <el-menu-item @click="saveNav('/'+item2.path)" v-for="item2 in item.children" :key="item2.id" :index="'/'+item2.path">
               <i class="el-icon-menu"></i>
               <span>{{ item2.authName }}</span>
             </el-menu-item>
@@ -55,13 +58,18 @@ export default {
     return {
       url: 'http://weldon.net.cn/back/img/logo.5b13fac4.png',
       menuList: [],
-      isCollapse: false
+      isCollapse: false,
+      activePath: ''
     }
   },
   created () {
     this.getMenuList()
+    this.activePath = window.sessionStorage.getItem('activePath')
   },
   methods: {
+    saveNav (activePath) {
+      window.sessionStorage.setItem('activePath', activePath)
+    },
     handleConfirm () {
       this.$store.commit('user/delToken')
       this.$router.push('/login')

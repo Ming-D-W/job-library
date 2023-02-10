@@ -10,6 +10,7 @@ export default {
   mutations: {
     setUserToken (state, payload) {
       state.token = payload
+      // console.log(payload)
       setToken(payload)
     },
     delToken (state) {
