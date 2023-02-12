@@ -28,7 +28,7 @@ export const changeUserState = (id, state) => {
 // 添加用户
 export const addUser = (data) => {
   return request({
-    method: 'post',
+    method: 'POST',
     url: '/private/v1/users',
     data
   })

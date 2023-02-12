@@ -9,12 +9,12 @@
     <el-card class="box-card">
       <el-row :gutter="20">
         <el-col :span="8">
-          <el-input placeholder="请输入内容">
-            <el-button slot="append" icon="el-icon-search"></el-button>
+          <el-input placeholder="请输入内容" v-model="queryInfo.query" @clear="getUserList" clearable>
+            <el-button @clear="getUserList" @click="getUserList" slot="append" icon="el-icon-search"></el-button>
           </el-input>
         </el-col>
         <el-col :span="4">
-          <el-button class="add" type="primary">添加用户</el-button>
+          <el-button @click="showDialog('add')" class="add" type="primary">添加用户</el-button>
         </el-col>
       </el-row>
       <el-table :data="userList" border Boolean>
@@ -24,7 +24,7 @@
         <el-table-column prop="mobile" label="电话"></el-table-column>
         <el-table-column prop="role_name" label="角色"></el-table-column>
         <el-table-column prop="mg_state" label="状态">
-          <template slot-scope="scope">
+          <template #scope>
 <!--            {{scope.row}}-->
             <el-switch
               v-model="scope.row.mg_state"
@@ -35,12 +35,12 @@
           </template>
         </el-table-column>
         <el-table-column prop="mg_state" label="操作" width="180px">
-          <template>
+          <template #default="{ row }">
 <!--            {{scope.row}}-->
-            <el-button @click="showDialog('edit', userInfo)" type="primary" icon="el-icon-edit" size="mini"></el-button>
-            <el-button @click="del(userInfo.id)" type="danger" icon="el-icon-delete" size="mini"></el-button>
-            <el-tooltip @click="showDialog('allot', userInfo)" content="分配角色" placement="top" :enterable="false">
-            <el-button type="warning" icon="el-icon-star-off" size="mini"></el-button>
+            <el-button @click="showDialog('edit', row)" type="primary" icon="el-icon-edit" size="mini"></el-button>
+            <el-button @click="del(row.id)" type="danger" icon="el-icon-delete" size="mini"></el-button>
+            <el-tooltip content="分配角色" placement="top" :enterable="false">
+            <el-button @click="showDialog('allot', row)" type="warning" icon="el-icon-star-off" size="mini"></el-button>
             </el-tooltip>
           </template>
         </el-table-column>
@@ -84,15 +84,13 @@
           <el-input
             v-model="form.username"
             autocomplete="off"
-            :disabled="type === 'edit'"
-          ></el-input>
+            :disabled="type === 'edit'"></el-input>
         </el-form-item>
         <el-form-item
           v-if="type === 'add'"
           label="密码"
           label-width="80px"
-          prop="password"
-        >
+          prop="password">
           <el-input v-model="form.password" autocomplete="off"></el-input>
         </el-form-item>
         <el-form-item label="邮箱" label-width="80px" prop="email">
@@ -191,7 +189,7 @@ export default {
       // console.log(data)
       const res = await changeUserState(userInfo.id, userInfo.mg_state)
       // console.log(res)
-      userInfo.mg_state = !!res.data.mg_state
+      userInfo.mg_state = !res.data.mg_state
       this.getUserList()
     },
     // 监听pagesize改变
@@ -206,7 +204,7 @@ export default {
       this.queryInfo.pagenum = newPage
       this.getUserList()
     },
-    // 获取用户列表
+    // 获取用户列表,搜索用户
     async getUserList () {
       const data = await getUser(this.queryInfo)
       // console.log(data)
@@ -215,7 +213,7 @@ export default {
       }
       this.userList = data.data.users
       this.total = data.data.total
-      console.log(this.userList)
+      // console.log(this.userList)
     },
     // 添加用户,编辑用户和修改角色
     async addUserMsg () {
@@ -261,10 +259,7 @@ export default {
       }
       this.dialogFormVisible = true
     },
-    // 搜索用户
-    searchTable () {
-      this.getUserList()
-    },
+
     // 删除用户
     del (id) {
       this.$confirm('此操作将永久删除该用户, 是否继续?', '提示', {
