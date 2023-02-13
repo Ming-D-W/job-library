@@ -2,4 +2,5 @@
  <trees>
      <tree path="/src/utils/request.js" title="axios模块" extension="js"/>
      <tree path="/src/utils/storage.js" title="本地存储" extension="js"/>
+     <tree path="/src/views/jurisdiction" title="权限"/>
  </trees>

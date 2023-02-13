@@ -76,7 +76,7 @@ export default {
     },
     async getMenuList () {
       const data = await getMenu()
-      console.log(data)
+      // console.log(data)
       this.menuList = data.data
     },
     collapseMenu () {
