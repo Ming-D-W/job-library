@@ -3,4 +3,8 @@
      <tree path="/src/utils/request.js" title="axios模块" extension="js"/>
      <tree path="/src/utils/storage.js" title="本地存储" extension="js"/>
      <tree path="/src/views/jurisdiction" title="权限"/>
+     <tree path="/src/views/layout" title="首页"/>
+     <tree path="/src/views/commodity" title="商品"/>
+     <tree path="/src/api/jurisdiction.js" title="权限" extension="js"/>
+     <tree path="/src/views/commodity/categories.vue" title="商品分类" extension="vue"/>
  </trees>

@@ -30,7 +30,7 @@ import {
   Message,
   Drawer,
   MenuItem,
-  Submenu, MenuItemGroup, Switch, Tooltip, Select, Tag
+  Submenu, MenuItemGroup, Switch, Tooltip, Select, Tag, Tree, Cascader
 } from 'element-ui'
 
 Vue.use(Breadcrumb)
@@ -67,6 +67,8 @@ Vue.use(Tooltip)
 Vue.use(Dialog)
 Vue.use(Select)
 Vue.use(Tag)
+Vue.use(Tree)
+Vue.use(Cascader)
 
 Vue.use(Loading.directive)
 

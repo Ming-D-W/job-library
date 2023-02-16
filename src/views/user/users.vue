@@ -35,7 +35,6 @@
         </el-table-column>
         <el-table-column prop="mg_state" label="操作" width="180px">
           <template #default="{ row }">
-<!--            {{scope.row}}-->
             <el-button @click="showDialog('edit', row)" type="primary" icon="el-icon-edit" size="mini"></el-button>
             <el-button @click="del(row.id)" type="danger" icon="el-icon-delete" size="mini"></el-button>
             <el-tooltip content="分配角色" placement="top" :enterable="false">
@@ -297,7 +296,6 @@ export default {
     typeTitle () {
       return mapTitle[this.type]
     }
-
   }
 }
 </script>

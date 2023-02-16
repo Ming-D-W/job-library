@@ -7,6 +7,11 @@ import Welcome from '@/views/welcome.vue'
 import Users from '@/views/user/users.vue'
 import Roles from '@/views/jurisdiction/roles.vue'
 import Rights from '@/views/jurisdiction/rights.vue'
+import Categories from '@/views/commodity/categories.vue'
+import Goods from '@/views/commodity/goods.vue'
+import Params from '@/views/commodity/params.vue'
+import Orders from '@/views/order/orders.vue'
+import Reports from '@/views/reports/reports.vue'
 
 Vue.use(VueRouter)
 
@@ -22,7 +27,12 @@ const router = new VueRouter({
         { path: '/welcome', component: Welcome },
         { path: '/users', component: Users },
         { path: '/roles', component: Roles },
-        { path: '/rights', component: Rights }
+        { path: '/rights', component: Rights },
+        { path: '/categories', component: Categories },
+        { path: '/goods', component: Goods },
+        { path: '/params', component: Params },
+        { path: '/orders', component: Orders },
+        { path: '/reports', component: Reports }
       ]
     }
   ]

@@ -5,7 +5,10 @@ import store from './store'
 import '@/utils/element.js'
 import '@/style/index.scss'
 
+import TreeTable from 'vue-table-with-tree-grid'
+
 Vue.config.productionTip = false
+Vue.component('tree-table', TreeTable)
 
 new Vue({
   router,

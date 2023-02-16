@@ -15,8 +15,10 @@
         <el-table-column prop="authName" label="权限名称" min-width="80"/>
         <el-table-column prop="path" label="路径" min-width="80"/>
         <el-table-column label="权限等级" min-width="80">
-          <template #default>
-
+          <template #default="{ row }">
+            <el-tag :type="rootLevel[row.level].type">
+              {{ rootLevel[row.level].text }}
+            </el-tag>
           </template>
         </el-table-column>
       </el-table>

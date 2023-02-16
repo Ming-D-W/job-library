@@ -56,7 +56,7 @@ export const delUser = (id) => {
     url: `/private/v1/users/${id}`
   })
 }
-// 分配角色
+// 获取单个角色
 export const distributeUser = (id) => {
   return request({
     method: 'get',
