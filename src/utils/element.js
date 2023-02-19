@@ -30,7 +30,21 @@ import {
   Message,
   Drawer,
   MenuItem,
-  Submenu, MenuItemGroup, Switch, Tooltip, Select, Tag, Tree, Cascader
+  Submenu,
+  MenuItemGroup,
+  Switch,
+  Tooltip,
+  Select,
+  Tag,
+  Tree,
+  Cascader,
+  Alert,
+  Steps,
+  Step,
+  Tabs,
+  TabPane,
+  Upload,
+  CheckboxGroup, Radio, Timeline, TimelineItem
 } from 'element-ui'
 
 Vue.use(Breadcrumb)
@@ -69,6 +83,16 @@ Vue.use(Select)
 Vue.use(Tag)
 Vue.use(Tree)
 Vue.use(Cascader)
+Vue.use(Alert)
+Vue.use(Steps)
+Vue.use(Step)
+Vue.use(Tabs)
+Vue.use(TabPane)
+Vue.use(Upload)
+Vue.use(CheckboxGroup)
+Vue.use(Radio)
+Vue.use(Timeline)
+Vue.use(TimelineItem)
 
 Vue.use(Loading.directive)
 

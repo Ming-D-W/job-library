@@ -7,4 +7,7 @@
      <tree path="/src/views/commodity" title="商品"/>
      <tree path="/src/api/jurisdiction.js" title="权限" extension="js"/>
      <tree path="/src/views/commodity/categories.vue" title="商品分类" extension="vue"/>
+     <tree path="/src/views/commodity/goods.vue" title="商品列表" extension="vue"/>
+     <tree path="/src/views/commodity/params.vue" title="参数" extension="vue"/>
+     <tree path="/src/utils/date.js" title="格式化时间戳" extension="js"/>
  </trees>

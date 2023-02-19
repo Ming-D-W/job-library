@@ -166,7 +166,7 @@ export default {
     },
     async getShopList () {
       const { data } = await getShop(this.queryInfo)
-      console.log(data)
+      // console.log(data)
       this.shopList = data.result
       this.total = data.total
     },
@@ -209,7 +209,7 @@ export default {
     async addShopMsg () {
       if (this.type === 'add') {
         await this.$refs.form.validate()
-
+        console.log(this.form)
         await createCategories(this.form)
         Message('添加成功')
       }
